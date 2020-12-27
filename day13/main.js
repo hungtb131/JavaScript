@@ -229,3 +229,50 @@ function unicodeReplace(s) {
     return result;
 }
 unicodeReplace("aBcDde");
+
+
+
+
+// Viết hàm arr._concat(arr2) nối 2 mảng
+arr._concat = function (arr2) {
+    let result = [];
+    for (let i = 0; i < this.length; i++) {
+        result[result.length] = this[i];
+    }
+    for (let i = 0; i < arr2.length; i++) {
+        result[result.length] = arr2[i];
+    }
+    return result;
+};
+
+// Viết hàm arr._push(value) thêm giá trị vào cuối mảng
+arr._push = function (value) {
+    let result = this;
+    result[result.length] = value;
+    return result;
+};
+// arr._pop() xóa phần tử cuối mảng, đồng thời trả về giá trị của các phần tử bị xóa
+arr._pop = function () {
+    let result = this[this.length - 1];
+    this.length--;
+    return result;
+};
+// arr._indexOf() tìm và trả về index của phần tử, nếu ko có trả về -1
+arr._indexOf = function (value) {
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] == value) {
+            return i;
+        }
+    }
+    return -1;
+};
+// arr._reverse() đảo ngược mảng
+arr._reverse = function () {
+
+    for(let i=0, j = this.length - 1; i < j; i++, j--) {
+        let temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+    }
+    return this;
+};
