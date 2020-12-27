@@ -87,24 +87,6 @@ let arr_push = (value) => {
     return arr[arr]
 
 }
-
-
-
-
-//viết hàm arr._pop() xóa phần tử cuối mản,trả về giá trị của phần tử bị xóa
-
-
-
-
-
-//Viết hàm arr._indexxOf() tìm và trả vê index của phần tử nếu không có trả về -1
-
-
-
-
-
-
-
 //Viết hàm arr.reverse() đảo ngược mảng
 arr = [4, 5, 6, 7, 8,1, 2, 3,9];
 let start = 0;
@@ -124,12 +106,6 @@ function _forEach(callback) {
     }
 }
 arr._forEach = _forEach();
-//
-
-
-
-///
-
 //
 //
 
@@ -276,3 +252,55 @@ arr._reverse = function () {
     }
     return this;
 };
+//arr.sort() method.
+//1.bubble sort
+//khai báo hàm
+function bubbleSort(arr){
+    // độ dài mảng
+    let len = arr.length;
+    //loop
+    for (let i = len-1; i>=0; i--){
+        //inner loop
+        for(let j = 1; j<=i; j++){
+            //đặt điều kiện so sánh phần tủ trong mảng
+            if(arr[j-1]>arr[j]){
+                //đổi chõ
+                let temp = arr[j-1];
+                arr[j-1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+//filter(); - trả lại 1 mảng,không làm thay đổi mảng gọi nó
+//khai báo mảng
+let people =
+    [
+        {name: 'Helga Brekke',age: 25,gender: 'f',us: true},
+        {name: 'Christine Hansen',age: 18,gender: 'm',us: false},
+        {name: 'Alfred Roob',age: 17,gender: 'm',us: false},
+        {name: 'Crystal Hermann',age: 27,gender: 'm',us: false},
+        {name: 'Dax Koch',age: 22,gender: 'f',us: true}
+    ];
+let _filter = [];
+//sử dụng vòng lặp duyệt mảng với điều kiện nhất định
+for (let i =0; i < people.length; i++){
+    if (people[i].gender=='f'){
+        _filter.push(people[i]);
+    }
+}
+console.table(_filter);
+
+
+
+
+//some() kiểm tra xem mảng có ít nhất một phần tử thỏa mãn hàm truyền vào
+// trả về boolean
+let array = [1, 2, 3, 4, 5];
+
+// checks whether an element is even
+let even = (element) => element % 2 === 0;
+
+console.log(array.some(even));
+// expected output: true
