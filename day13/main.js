@@ -138,12 +138,12 @@ deleteSpaccing("     Hello    world   !          ");
 // 4. Viết hàm đảo ngược chữ thường thành chữ hoa, và ngược lại. VD “aBcD” => “AbCd”
 function reverseChar(string) {
     let newString = "";
-    for (let i = 0; i < string.length; i++){
-        if (string[i] == string[i].toUpperCase()) {
+    for(let i = 0; i < string.length; i++){
+        if(string[i] == string[i].toUpperCase()){
             newString += string[i].toLowerCase()
-        } else if (string[i] == string[i].toLowerCase()) {
+        }else if (string[i] == string[i].toLowerCase()){
             newString += string[i].toUpperCase()
-        } else {
+        }else{
             newString += string[i];
         }
     }
@@ -184,7 +184,7 @@ function cuttingString(string, n) {
     }
     return newString
 }
-cuttingString("Hello Wolrd I'm JavaScript", 2);
+cuttingString("Hello World I'm JavaScript", 2);
 
 // 10. Viết hàm tạo chuỗi GUID ngẫu nhiên với độ dài 32 ký tự. VD “sfjh2ih4(U#%(kljo423oiir*(#%UIOJ”
 function NewStringGuid(){
@@ -284,23 +284,95 @@ let people =
         {name: 'Dax Koch',age: 22,gender: 'f',us: true}
     ];
 let _filter = [];
-//sử dụng vòng lặp duyệt mảng với điều kiện nhất định
+//sử dụng vòng lặp duyệt mảng với 1 điều kiện nhất định
 for (let i =0; i < people.length; i++){
-    if (people[i].gender=='f'){
+    if (people[i].age >=18){
         _filter.push(people[i]);
     }
 }
 console.table(_filter);
-
+// ----
+arr = [{
+    name: "nguyen",
+    age: 20
+},
+    {
+        name: "dung",
+        age: 40
+    }
+]
+let xetDk = (tuoi) => {
+    if (tuoi.age > 29) return true;
+    else return false;
+}
+arr._filter = function(callback) {
+    let result = [];
+    for (let i = 0; i < this.length; i++) {
+        if (callback(this[i])) {
+            result[result.length] = this[i];
+        }
+    }
+    return result;
+}
+arr._filter(xetDk);
 
 
 
 //some() kiểm tra xem mảng có ít nhất một phần tử thỏa mãn hàm truyền vào
-// trả về boolean
-let array = [1, 2, 3, 4, 5];
+// // trả về boolean
+// let array = [1, 2, 3, 4, 5];
+//
+// // checks whether an element is even
+// let even = (element) => element % 2 === 0;
+//
+// console.log(array.some(even));
+// // expected output: true
+//reduce()
+let arr =
+    [
+        {name: 'Helga Brekke',age: 25,gender: 'f',us: true},
+        {name: 'Christine Hansen',age: 18,gender: 'm',us: false},
+        {name: 'Alfred Roob',age: 17,gender: 'm',us: false},
+        {name: 'Crystal Hermann',age: 27,gender: 'm',us: false},
+        {name: 'Dax Koch',age: 22,gender: 'f',us: true}
+    ];
+arr._reduce = function (callback,initial){
+    let accu = initial;
+    for(let i =0;i<arr.length;i++){
+        accu = callback(accu,this[i]);
+    }
+return accu;
+}
+arr._reduce((sum, i ) => (sum +=i.name), 0);
 
-// checks whether an element is even
-let even = (element) => element % 2 === 0;
 
-console.log(array.some(even));
-// expected output: true
+
+
+//map
+arr._map = function (callback){
+    newArr = [];
+    for (;;);
+};
+// tìm vị trí trong mảng của  1 phần tử
+let arr = [1,2,3,4,5];
+arr._indexOf = function (value) {
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] == value) {
+            return i;
+        }
+    }
+    return -1;
+};
+arr._indexOf(2);
+//tìm phần tử lớn nhất trong mảng
+let arr = [1,2,3,4,5];
+arr._max = function (max){
+    for (let i =0;i < this.length;i++){
+        if (this[i] > max){
+            return i;
+        }
+    }
+}
+arr._max()
+
+
