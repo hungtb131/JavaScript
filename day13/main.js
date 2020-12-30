@@ -110,12 +110,15 @@ arr._forEach = _forEach();
 //
 
 // 1. Viết hàm chuyển đổi một chuỗi thành dạng capitalize. VD: “hello world” => “Hello World”
-function capitalize(string) {
-    let space = string.indexOf(" ");
-    let newString = string.charAt(0).toUpperCase() + string.slice(1);
-    return newString.replace(string[space + 1], string[space + 1].toUpperCase());
-}
-capitalize(" hello world");
+let capitalizeChange = (str) => {
+    let result = str[0].toUpperCase();
+    for (let i = 1; i < str.length; i++) {
+        if (str[i - 1] == " ") result += str[i].toUpperCase();
+        else result += str[i];
+    }
+    return result;
+};
+capitalizeChange("hello world");
 
 // 2. Viết hàm chuyển đổi một chuỗi thành dạng paramaterize. VD “Hello World” => “hello-world”
 function paramaterize(string) {
